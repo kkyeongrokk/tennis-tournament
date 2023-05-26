@@ -6,3 +6,33 @@ body {
 a {
   color: #00B7FF;
 }
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav > img {
+  height: 5vmin;
+  border-radius: 50%;
+}
+
+#log-out {
+  margin-left: 5vmin;
+}
+
+nav > a:first-child {
+  margin-right: auto;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
+.login img {
+  height: 30px;
+}

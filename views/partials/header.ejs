@@ -8,3 +8,13 @@
   <title>Document</title>
 </head>
 <body>
+  <nav>
+    <a href="/">TOURNAMENT DRAW</a>
+    <% if (user) { %>
+      <img src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer">
+      <span><%= user.name %></span>
+      <a id="log-out" href="/logout">LOG OUT</a>
+    <% } else { %>
+      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+    <% } %>
+  </nav>
