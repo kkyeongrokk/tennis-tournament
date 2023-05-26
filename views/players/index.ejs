@@ -9,6 +9,7 @@
       <th>Country</th>
       <th>Ranking</th>
       <th>UTR</th>
+      <th></th>
     </tr>
   </thead>
   
@@ -20,6 +21,7 @@
         <td><%= p.country %></td>
         <td><%= p.ranking %></td>
         <td><%= p.utr %></td>
+        <td><a href="/players/<%= p._id %>">Info</a></td>
       </tr>
     </tbody>
   <% }) %>
