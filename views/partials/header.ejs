@@ -10,7 +10,9 @@
 <body>
   <nav>
     <a href="/">TOURNAMENT DRAW</a>
+    <a href="/players">Who's playing</a>
     <% if (user) { %>
+      <a href="/players/new">Register</a>
       <img src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer">
       <span><%= user.name %></span>
       <a id="log-out" href="/logout">LOG OUT</a>

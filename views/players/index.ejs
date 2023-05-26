@@ -1,3 +1,6 @@
+<%- include('../partials/header') %>
+
+<h2><%= title %></h2>
 <table>
   <thead>
     <tr>
@@ -8,14 +11,18 @@
       <th>UTR</th>
     </tr>
   </thead>
-
+  
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
+    <% players.forEach(function(p) { %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.age %></td>
+        <td><%= p.country %></td>
+        <td><%= p.ranking %></td>
+        <td><%= p.utr %></td>
+      </tr>
+    </tbody>
+  <% }) %>
 </table>
+
+<%- include('../partials/footer') %>
