@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+
+<h2>Tournaments</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Club Name</th>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tournaments.forEach(function(t) { %>
+      <tr>
+        <td><%= t.name %></td>
+        <td><%= t.clubName %></td>
+        <td><%= t.location %></td>
+        <td><%= t.date %></td>
+        <td><a href="/tournaments/<%= t._id %>">Details</a></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<a href="/tournaments/new">Add New Tournament</a>
+
+<%- include('../partials/footer') %>

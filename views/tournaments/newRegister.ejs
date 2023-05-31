@@ -1,8 +1,6 @@
 <%- include('../partials/header') %>
 
-<h2><%= title %></h2>
-
-<form action="/players" method="POST">
+<form action="/tournaments/<%= tournament._id %>?_method=PUT" method="POST">
   <label>Name: <%= user.name %></label>
   <label>Age: </label>
   <input type="number" name="age">

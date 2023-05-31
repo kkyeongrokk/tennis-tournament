@@ -8,11 +8,14 @@
   <title>Document</title>
 </head>
 <body>
-  <nav>
-    <a href="/">TOURNAMENT DRAW</a>
-    <a href="/players">Who's playing</a>
+  <nav id="nav">
+    <% /* TODO: Make the nav bar not able to click the button that user is already in */ %>
+    <a href="/">HOME</a>
+    <a href="/tournaments">TOURNAMENTS</a>
+    <a href="/players">WHO'S PLAYING</a>
     <% if (user) { %>
-      <a href="/players/new">Register</a>
+      <%/* TODO: if user already registered for the tournament hide Register button */%>
+      <a href="/players/new">REGISTER</a>
       <img src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer">
       <span><%= user.name %></span>
       <a id="log-out" href="/logout">LOG OUT</a>

@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const playerSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    default: 'TBD'
   },
   age: Number,
   country: String,

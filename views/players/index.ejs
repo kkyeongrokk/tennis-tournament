@@ -27,4 +27,10 @@
   <% }) %>
 </table>
 
+<form action="/tournaments" method="POST">
+  <% players.forEach(function(p, idx) { %>
+    <input type="hidden" name="player<%= idx + 1 %>" value="<%= p._id %>">
+    <% }) %>
+    <button type="submit">DRAW</button>
+</form>
 <%- include('../partials/footer') %>

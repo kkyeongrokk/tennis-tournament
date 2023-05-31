@@ -1,2 +1,25 @@
-<%- include('./partials/header.ejs') %>
-<%- include('./partials/footer.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <nav id="nav-home">
+    <% /* TODO: if user is registered for the tournament, don't show up register button */ %>
+    <% if (user) { %>
+      <h3>WELCOME <span><strong><%= user.name %></strong></span>!</h3>
+      <a href="/players/new">REGISTER</a>
+      <a id="log-out" href="/logout">LOG OUT</a>
+      <% } else { %>
+        <h3>WELCOME TO THE TENNIS TOURNAMENT</h3>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <% } %>
+        <a href="/players">PLAYERS LIST</a>
+        <a href="/tournaments">TOURNAMENTS</a>
+  </nav>
+  </body>
+</html>

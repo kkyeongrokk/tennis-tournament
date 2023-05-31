@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<h2>ADD NEW TOURNAMENTS</h2>
+
+<form action="/tournaments" method="POST">
+  <label>Name: </label>
+  <input type="text" name="name">
+  <label>Club Name: </label>
+  <input type="text" name="clubName">
+  <label>Location: </label>
+  <input type="text" name="location">
+  <label>Date: </label>
+  <input type="datetime-local">
+  <input type="submit">
+</form>
+
+<%- include('../partials/footer') %>

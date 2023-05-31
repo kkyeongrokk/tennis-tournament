@@ -17,11 +17,12 @@ function newPlayer(req, res) {
 }
 
 async function create(req, res) {
+  req.body.name = user.name;
   const player = await Player.create(req.body);
-  res.redirect('/players');
+  res.redirect(`/players/${player._id}`);
 }
 
 async function show(req, res) {
   const player = await Player.findById(req.params.id);
-  res.render(`players/show`, {player})
+  res.render('players/show', {player})
 }
