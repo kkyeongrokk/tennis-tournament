@@ -2,6 +2,44 @@
 
 <h2><%= title %></h2>
 
-<a href="/tournaments/<%= tournament._id %>/registration">Registration</a>
+<div>
+  <p>Club Name: <%= tournament.clubName %></p>
+  <p>Location: <%= tournament.location %></p>
+  <p>Date: <%= tournament.date %> - <%= tournament.date %></p>
+</div>
+
+<h3>WHO'S PLAYING</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Country</th>
+      <th>Ranking</th>
+      <th>UTR</th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% tournament.players.forEach(function(p) { %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.age %></td>
+        <td><%= p.country %></td>
+        <td><%= p.ranking %></td>
+        <td><%= p.utr %></td>
+        <td><a href="/tournaments/<%= tournament._id %>/players/<%= p._id %>">Info</a></td>
+      </tr>
+    </tbody>
+  <% }) %>
+</table>
+
+<a href="/tournaments/<%= tournament._id %>/registration">Register Here!</a>
+<form action="/tournaments/<%= tournament._id %>/draw" method="POST">
+  <input type="submit" value="Draw(Admin)">
+</form>
+<a href="/tournaments/<%= tournament._id %>/draw">Draw(players)</a>
+
 
 <%- include('../partials/footer') %>

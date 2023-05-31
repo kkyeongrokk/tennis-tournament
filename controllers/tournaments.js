@@ -6,7 +6,9 @@ module.exports = {
   new: newTournament,
   show,
   register,
-  update
+  update,
+  newDraw,
+  showPlayer
 };
 
 async function index(req, res) {
@@ -50,4 +52,50 @@ async function update(req, res) {
   await tournament.save();
   console.log(req.body);
   res.redirect(`/tournaments/${tournament._id}`);
+}
+
+async function newDraw(req, res) {
+  const tournament = await Tournament.findById(req.params.id);
+  // sort by ranking
+  tournament.players.sort((a, b) => a.ranking - b.ranking);
+
+  tournament.firstRound1 = { 
+    playerOne: tournament.players[0],
+    playerTwo: tournament.players[15],
+  };
+  tournament.firstRound2 = { 
+    playerOne: tournament.players[6],
+    playerTwo: tournament.players[9],
+  };
+  tournament.firstRound3 = { 
+    playerOne: tournament.players[2],
+    playerTwo: tournament.players[13],
+  };
+  tournament.firstRound4 = { 
+    playerOne: tournament.players[4],
+    playerTwo: tournament.players[11],
+  };
+  tournament.firstRound5 = { 
+    playerOne: tournament.players[1],
+    playerTwo: tournament.players[14],
+  };
+  tournament.firstRound6 = { 
+    playerOne: tournament.players[7],
+    playerTwo: tournament.players[8],
+  };
+  tournament.firstRound7 = { 
+    playerOne: tournament.players[3],
+    playerTwo: tournament.players[12],
+  };
+  tournament.firstRound8 = { 
+    playerOne: tournament.players[5],
+    playerTwo: tournament.players[10],
+  };
+  console.log(tournament);
+
+  res.render('tournaments/draw', { tournament });
+}
+
+async function showPlayer(req, res) {
+  
 }

@@ -6,7 +6,7 @@ const tournamentsCtrl = require('../controllers/tournaments');
 router.get('/', tournamentsCtrl.index);
 // GET /tournaments/new
 router.get('/new', tournamentsCtrl.new);
-// POST /tournaments/draw
+// POST /tournaments
 router.post('/', tournamentsCtrl.create);
 // GET /tournaments/:id
 router.get('/:id', tournamentsCtrl.show);
@@ -14,5 +14,10 @@ router.get('/:id', tournamentsCtrl.show);
 router.get('/:id/registration', tournamentsCtrl.register);
 // PUT /tournaments/:id
 router.put('/:id', tournamentsCtrl.update);
+// GET /tournaments/:id/draw
+router.get('/:id/draw', tournamentsCtrl.newDraw);
+// GET /tournaments/:id/players/:id
+router.get('/:id/players/:id', tournamentsCtrl.showPlayer)
+// DELETE /tournaments/:id/players/:id
 
 module.exports = router;
