@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+const Player = require('../models/player');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,13 +21,13 @@ router.get('/auth/google', passport.authenticate(
 ));
 
 // Google OAuth callback route
-router.get('/oauth2callback', passport.authenticate(
-  'google',
-  {
-    successRedirect: '/',
-    failureRedirect: '/'
-  }
-));
+router.get('/oauth2callback', passport.authenticate('google', { failureRedirect: '/' }), 
+  async function(req, res) {
+    console.log(req.user);
+    let player = await Player.findOne({user: req.user._id});
+    if (player) return res.redirect('/');
+    res.render('players/new', { title: 'Sign Up' });
+  });
 
 // OAuth logout route
 router.get('/logout', function(req, res){

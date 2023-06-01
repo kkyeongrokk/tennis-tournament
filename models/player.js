@@ -5,7 +5,6 @@ const playerSchema = new Schema({
   name: {
     type: String,
     required: true,
-    default: 'TBD'
   },
   age: Number,
   country: String,

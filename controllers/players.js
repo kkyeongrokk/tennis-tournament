@@ -17,9 +17,9 @@ function newPlayer(req, res) {
 }
 
 async function create(req, res) {
-  req.body.name = user.name;
+  req.body.user = req.user._id;
   const player = await Player.create(req.body);
-  res.redirect(`/players/${player._id}`);
+  res.redirect('/');
 }
 
 async function show(req, res) {

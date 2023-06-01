@@ -8,6 +8,8 @@ router.get('/', tournamentsCtrl.index);
 router.get('/new', tournamentsCtrl.new);
 // POST /tournaments
 router.post('/', tournamentsCtrl.create);
+// GET /tournaments/register
+router.get('/:id/register', tournamentsCtrl.register);
 // GET /tournaments/:id
 router.get('/:id', tournamentsCtrl.show);
 // GET /tournaments/:id/registration
@@ -16,8 +18,8 @@ router.get('/:id/registration', tournamentsCtrl.register);
 router.put('/:id', tournamentsCtrl.update);
 // GET /tournaments/:id/draw
 router.get('/:id/draw', tournamentsCtrl.newDraw);
-// GET /tournaments/:id/players/:id
-router.get('/:id/players/:id', tournamentsCtrl.showPlayer)
+// GET /tournaments/:id/players/:playersId
+router.get('/:id/players/:playersId', tournamentsCtrl.showPlayer);
 // DELETE /tournaments/:id/players/:id
 
 module.exports = router;

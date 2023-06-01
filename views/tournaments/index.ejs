@@ -25,6 +25,8 @@
   </tbody>
 </table>
 
-<a href="/tournaments/new">Add New Tournament</a>
+<% if (user.admin) { %>
+  <a href="/tournaments/new">Add New Tournament</a>
+<% } %>
 
 <%- include('../partials/footer') %>
