@@ -14,8 +14,6 @@ router.get('/:id/register', tournamentsCtrl.register);
 router.get('/:id', tournamentsCtrl.show);
 // GET /tournaments/:id/registration
 router.get('/:id/registration', tournamentsCtrl.register);
-// PUT /tournaments/:id
-// router.put('/:id', tournamentsCtrl.update);
 // GET /tournaments/:id/draw
 router.get('/:id/draw', tournamentsCtrl.newDraw);
 // GET /tournaments/:id/players/:playersId
@@ -26,5 +24,7 @@ router.delete('/:id', tournamentsCtrl.delete);
 router.get('/:id/edit', tournamentsCtrl.edit);
 // PUT /tournaments/:id
 router.put('/:id', tournamentsCtrl.update);
+// GET /tournaments/:id/match/:matchId
+router.get('/:id/match/:matchId', tournamentsCtrl.showMatch);
 
 module.exports = router;

@@ -12,7 +12,8 @@ module.exports = {
   showPlayer,
   delete: deleteTournament,
   edit,
-  update
+  update,
+  showMatch
 };
 
 async function index(req, res) {
@@ -60,22 +61,8 @@ async function register(req, res) {
   res.redirect(`/tournaments/${req.params.id}`);
 }
 
-// async function update(req, res) {
-//   const tournament = await Tournament.findById(req.params.id);
-//   req.body.name = req.user.name;
-//   req.body.user = req.user._id;
-//   tournament.players.push(req.body);
-//   await tournament.save();
-//   console.log(req.body);
-//   res.redirect(`/tournaments/${tournament._id}`);
-// }
-
 async function newDraw(req, res) {
   const tournament = await Tournament.findById(req.params.id);
-  // sort by ranking
-  tournament.players.sort((a, b) => a.ranking - b.ranking);
-  console.log(tournament);
-
   res.render('tournaments/draw', { tournament });
 }
 
@@ -98,4 +85,10 @@ async function edit(req, res) {
 async function update(req, res) {
   await Tournament.updateOne({_id: req.params.id}, req.body);
   res.redirect(`/tournaments/${req.params.id}`)
+}
+
+async function showMatch(req, res) {
+  const match = await Match.findById(req.params.matchId);
+  console.log(match);
+  res.render('tournaments/match', {title: 'Match Score', match});
 }

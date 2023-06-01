@@ -6,40 +6,48 @@
   <div id="first-round">
     <div>
       <p><%= tournament.firstRound1.playerOne.name %></p>
+      <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.firstRound1._id %>">Score</a>
       <p><%= tournament.firstRound1.playerTwo.name %></p>
     </div>
     <div>
       <p><%= tournament.firstRound2.playerOne.name %></p>
+      <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.firstRound2._id %>">Score</a>
       <p><%= tournament.firstRound2.playerTwo.name %></p>
     </div>
     <div>
       <p><%= tournament.firstRound3.playerOne.name %></p>
+      <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.firstRound3._id %>">Score</a>
       <p><%= tournament.firstRound3.playerTwo.name %></p>
     </div>
     <div>
       <p><%= tournament.firstRound4.playerOne.name %></p>
+      <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.firstRound4._id %>">Score</a>
       <p><%= tournament.firstRound4.playerTwo.name %></p>
     </div>
     <div>
       <p><%= tournament.firstRound5.playerOne.name %></p>
+      <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.firstRound5._id %>">Score</a>
       <p><%= tournament.firstRound5.playerTwo.name %></p>
     </div>
     <div>
       <p><%= tournament.firstRound6.playerOne.name %></p>
+      <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.firstRound6._id %>">Score</a>
       <p><%= tournament.firstRound6.playerTwo.name %></p>
     </div>
     <div>
       <p><%= tournament.firstRound7.playerOne.name %></p>
+      <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.firstRound7._id %>">Score</a>
       <p><%= tournament.firstRound7.playerTwo.name %></p>
     </div>
     <div>
       <p><%= tournament.firstRound8.playerOne.name %></p>
+      <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.firstRound8._id %>">Score</a>
       <p><%= tournament.firstRound8.playerTwo.name %></p>
     </div>
   </div>
   <div id="quarter-final">
     <div>
-      <p></p>
+      <p><%= tournament.firstRound1.winner.name %></p>
       <p></p>
     </div>
     <div>

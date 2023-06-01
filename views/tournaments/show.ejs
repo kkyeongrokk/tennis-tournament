@@ -39,10 +39,11 @@
   <% }) %>
 </table>
 
-<a href="/tournaments/<%= tournament._id %>/register">Register Here!</a>
-<form action="/tournaments/<%= tournament._id %>/draw" method="POST">
-  <input type="submit" value="Draw(Admin)">
-</form>
+<% if (tournament.players.length === 16) { %>
+  <a href="/tournaments/<%= tournament._id %>/draw">DRAW</a>
+<% } else { %>
+  <a href="/tournaments/<%= tournament._id %>/register">Register Here!</a>
+<% } %>
 
 
 <%- include('../partials/footer') %>

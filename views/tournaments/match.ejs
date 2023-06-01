@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<h3><%= match.playerOne.name %> vs <%= match.playerTwo.name %></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>1 Set</th>
+      <th>2 Set</th>
+      <th>3 Set</th>
+    </tr>
+  </thead>
+  
+  <form action="">
+    <tbody>
+        <tr>
+          <td><%= match.playerOne.name %></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+        </tr>
+        <tr>
+          <td><%= match.playerTwo.name %></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+<a href="#">Submit Score</a>
+
+<%- include('../partials/footer') %>
