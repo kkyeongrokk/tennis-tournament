@@ -20,6 +20,7 @@ router.put('/:id', tournamentsCtrl.update);
 router.get('/:id/draw', tournamentsCtrl.newDraw);
 // GET /tournaments/:id/players/:playersId
 router.get('/:id/players/:playersId', tournamentsCtrl.showPlayer);
-// DELETE /tournaments/:id/players/:id
+// DELETE /tournaments/:id
+router.delete('/:id', tournamentsCtrl.delete);
 
 module.exports = router;
