@@ -10,7 +10,7 @@
 </head>
 <body id="body-home">
   <nav id="nav-home">
-    <div>
+    <div class="home-link">
       <% if (user) { %>
         <h3>WELCOME <span><strong><%= user.name %></strong></span>!</h3>
       <% } else { %>
@@ -23,17 +23,17 @@
     <div>
 
     </div>
-    <div>
-      <a class="home-a" href="/players">PLAYERS LIST</a>
+    <div class="home-link">
+      <a href="/players">PLAYERS LIST</a>
     </div>
-    <div>
-      <a class="home-a" href="/tournaments">TOURNAMENTS</a>
+    <div class="home-link">
+      <a href="/tournaments">TOURNAMENTS</a>
     </div>
-    <div>
+    <div class="home-link">
       <% if (user) { %>
-        <a class="home-a" id="log-out" href="/logout">LOG OUT</a>
+        <a id="log-out" href="/logout">LOG OUT</a>
       <% } else { %>
-        <a class="home-a" href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
       <% } %>
     </div>   
   </nav>

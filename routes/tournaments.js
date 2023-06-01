@@ -26,5 +26,7 @@ router.get('/:id/edit', tournamentsCtrl.edit);
 router.put('/:id', tournamentsCtrl.update);
 // GET /tournaments/:id/match/:matchId
 router.get('/:id/match/:matchId', tournamentsCtrl.showMatch);
+// PUT /tournaments/:id/draw/:matchId
+router.put('/:id/draw/:matchId', tournamentsCtrl.updateMatch);
 
 module.exports = router;

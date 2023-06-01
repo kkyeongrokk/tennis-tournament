@@ -13,7 +13,8 @@ module.exports = {
   delete: deleteTournament,
   edit,
   update,
-  showMatch
+  showMatch,
+  updateMatch
 };
 
 async function index(req, res) {
@@ -89,6 +90,31 @@ async function update(req, res) {
 
 async function showMatch(req, res) {
   const match = await Match.findById(req.params.matchId);
+  const tournament = await Tournament.findById(req.params.id);
+  res.render('tournaments/match', { title: 'Match Score', match, tournament });
+}
+
+async function updateMatch(req, res) {
+  const match = await Match.findById(req.params.matchId);
+  for (let i = 1; i < 4; i++) {
+    if (req.body[`p1Score${i}`])  match.playerOneScore.push(parseInt(req.body[`p1Score${i}`]));
+    if (req.body[`p2Score${i}`])  match.playerTwoScore.push(parseInt(req.body[`p2Score${i}`]));
+  }
+
+  // winLogic
+  let count1, count2 = 0;
+  for (let i = 0; i < 3; i++) {
+    match.playerOneScore[i] > match.playerTwoScore[i] ? ++count1 : ++count2
+  }
+  match.winner.boolean = true;
+  if (count1 >= 2) {
+    match.winner.player = match.playerOne;
+  } else {
+    match.winner.player = match.playerTwo;
+  }
+
   console.log(match);
-  res.render('tournaments/match', {title: 'Match Score', match});
+
+  await match.save();
+  res.redirect(`/tournaments/${req.params.id}/match/${req.params.matchId}`);
 }
