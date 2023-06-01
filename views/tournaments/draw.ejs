@@ -47,38 +47,64 @@
   </div>
   <div id="quarter-final">
     <div>
-      <p><%= tournament.firstRound1.winner.name %></p>
-      <p></p>
+      <% if (tournament.quarterFinal1) { %>
+        <p><%= tournament.firstRound1.winner.player.name %></p>
+        <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.quarterFinal1._id %>">Score</a>
+        <p><%= tournament.firstRound2.winner.player.name %></p>
+      <% } %>
     </div>
     <div>
-      <p></p>
-      <p></p>
+      <% if (tournament.quarterFinal2) { %>
+        <p><%= tournament.firstRound3.winner.player.name %></p>
+        <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.quarterFinal2._id %>">Score</a>
+        <p><%= tournament.firstRound4.winner.player.name %></p>
+      <% } %>
     </div>
     <div>
-      <p></p>
-      <p></p>
+      <% if (tournament.quarterFinal3) { %>
+        <p><%= tournament.firstRound5.winner.player.name %></p>
+        <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.quarterFinal3._id %>">Score</a>
+        <p><%= tournament.firstRound6.winner.player.name %></p>
+      <% } %>
     </div>
     <div>
-      <p></p>
-      <p></p>
+      <% if (tournament.quarterFinal4) { %>
+        <p><%= tournament.firstRound7.winner.player.name %></p>
+        <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.quarterFinal4._id %>">Score</a>
+        <p><%= tournament.firstRound8.winner.player.name %></p>
+      <% } %>
     </div>
   </div>
   <div id="semi-final">
     <div>
-      <p></p>
-      <p></p>
+      <% if (tournament.semiFinal1) { %>
+        <p><%= tournament.quarterFinal1.winner.player.name %></p>
+        <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.semiFinal1._id %>">Score</a>
+        <p><%= tournament.quarterFinal2.winner.player.name %></p>
+      <% } %>
     </div>
     <div>
-      <p></p>
-      <p></p>
+      <% if (tournament.semiFinal2) { %>
+        <p><%= tournament.quarterFinal3.winner.player.name %></p>
+        <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.semiFinal2._id %>">Score</a>
+        <p><%= tournament.quarterFinal4.winner.player.name %></p>
+      <% } %>
     </div>
   </div>
   <div id="final">
     <div>
-      <p></p>
-      <p></p>
+      <% if (tournament.final) { %>
+        <p><%= tournament.semiFinal1.winner.player.name %></p>
+        <a href="/tournaments/<%= tournament._id %>/match/<%= tournament.final._id %>">Score</a>
+        <p><%= tournament.semiFinal2.winner.player.name %></p>
+      <% } %>
     </div>
   </div>
 </div>
+
+<% if (tournament.final && tournament.final.winner.boolean) { %>
+  <h1>The Champion is <%= tournament.final.winner.player.name %></h1>
+
+<% } %>
 
 <%- include('../partials/footer') %>

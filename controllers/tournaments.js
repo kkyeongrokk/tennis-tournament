@@ -19,7 +19,7 @@ module.exports = {
 
 async function index(req, res) {
   const tournaments = await Tournament.find({});
-  res.render('tournaments/index', { tournaments });
+  res.render('tournaments/index', { title: 'Tournaments', tournaments });
 }
 
 async function create(req, res) {
@@ -28,12 +28,11 @@ async function create(req, res) {
 }
 
 function newTournament(req, res) {
-  res.render('tournaments/new');
+  res.render('tournaments/new', {title: 'New Tournament'});
 }
 
 async function show(req, res) {
   const tournament = await Tournament.findById(req.params.id).populate('players').populate('firstRound1');
-  console.log(tournament);
   res.render('tournaments/show', { title: tournament.name, tournament });
 }
 
@@ -47,7 +46,6 @@ async function register(req, res) {
 
   if (tournament.players.length === 16) {
     let playerss = tournament.players.map(p=>p);
-    console.log("in if statement");
     for (let i = 0; i < 8; i++) {
       const players = {
         playerOne: playerss.shift(),
@@ -64,13 +62,13 @@ async function register(req, res) {
 
 async function newDraw(req, res) {
   const tournament = await Tournament.findById(req.params.id);
-  res.render('tournaments/draw', { tournament });
+  res.render('tournaments/draw', { title: `${tournament.name} - Draw`, tournament });
 }
 
 async function showPlayer(req, res) {
   const tournament = await Tournament.findById(req.params.id);
-  const player = tournament.players.id(req.params.playersId);
-  res.render('tournaments/showPlayer', { player });
+  const player = await Player.findById(req.params.playersId);
+  res.render('tournaments/showPlayer', { title: player.name, player });
 }
 
 async function deleteTournament(req, res) {
@@ -80,7 +78,7 @@ async function deleteTournament(req, res) {
 
 async function edit(req, res) {
   const tournament = await Tournament.findById(req.params.id);
-  res.render('tournaments/edit', { tournament });
+  res.render('tournaments/edit', { title: `${tournament.name} - Edit`, tournament });
 }
 
 async function update(req, res) {
@@ -112,9 +110,61 @@ async function updateMatch(req, res) {
   } else {
     match.winner.player = match.playerTwo;
   }
-
-  console.log(match);
-
   await match.save();
+
+  // create quarter final
+  const tournament = await Tournament.findById(req.params.id);
+  let count = 1;
+  for (let i = 1; i < 8; i+=2) {
+    if (tournament[`firstRound${i}`].winner.boolean && tournament[`firstRound${i + 1}`].winner.boolean) {
+      if (!tournament[`quarterFinal${count}`]) {
+          const players = {
+          playerOne: tournament[`firstRound${i}`].winner.player,
+          playerTwo: tournament[`firstRound${i + 1}`].winner.player
+        };
+        const newMatch = await Match.create(players);
+        tournament[`quarterFinal${count}`] = newMatch;
+      }
+    }
+    count++;
+  }
+
+  // quarter final
+  count = 1;
+  for (let i = 1; i < 4; i+=2) {
+    if (tournament[`quarterFinal${i}`] && tournament[`quarterFinal${i + 1}`]) {
+      if (tournament[`quarterFinal${i}`].winner.boolean && tournament[`quarterFinal${i + 1}`].winner.boolean) {
+        if (!tournament[`semiFinal${count}`]) {
+            const players = {
+            playerOne: tournament[`quarterFinal${i}`].winner.player,
+            playerTwo: tournament[`quarterFinal${i + 1}`].winner.player
+          };
+          const newMatch = await Match.create(players);
+          tournament[`semiFinal${count}`] = newMatch;
+        }
+      }
+    }
+    count++;
+  }
+
+  // final
+  for (let i = 1; i < 2; i+=2) {
+    if (tournament[`semiFinal${i}`] && tournament[`semiFinal${i + 1}`]) {
+      if (tournament[`semiFinal${i}`].winner.boolean && tournament[`semiFinal${i + 1}`].winner.boolean) {
+        if (!tournament.final) {
+            const players = {
+            playerOne: tournament[`semiFinal${i}`].winner.player,
+            playerTwo: tournament[`semiFinal${i + 1}`].winner.player
+          };
+          const newMatch = await Match.create(players);
+          tournament.final = newMatch;
+        }
+      }
+    }
+  }
+
+  const updated = await tournament.save();
+  console.log(updated);
+
   res.redirect(`/tournaments/${req.params.id}/match/${req.params.matchId}`);
 }

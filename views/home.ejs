@@ -10,11 +10,11 @@
 </head>
 <body id="body-home">
   <nav id="nav-home">
-    <div class="home-link">
+    <div>
       <% if (user) { %>
-        <h3>WELCOME <span><strong><%= user.name %></strong></span>!</h3>
+        <h3>WELCOME<br><span><strong><%= user.name %></strong></span>!</h3>
       <% } else { %>
-        <h3>WELCOME TO THE TENNIS TOURNAMENT</h3>
+        <h3>WELCOME<br>TO THE TENNIS<br>TOURNAMENT</h3>
       <% } %>
     </div>
     <div>
