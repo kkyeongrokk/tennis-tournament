@@ -15,12 +15,16 @@ router.get('/:id', tournamentsCtrl.show);
 // GET /tournaments/:id/registration
 router.get('/:id/registration', tournamentsCtrl.register);
 // PUT /tournaments/:id
-router.put('/:id', tournamentsCtrl.update);
+// router.put('/:id', tournamentsCtrl.update);
 // GET /tournaments/:id/draw
 router.get('/:id/draw', tournamentsCtrl.newDraw);
 // GET /tournaments/:id/players/:playersId
 router.get('/:id/players/:playersId', tournamentsCtrl.showPlayer);
 // DELETE /tournaments/:id
 router.delete('/:id', tournamentsCtrl.delete);
+// GET /tournaments/:id/edit
+router.get('/:id/edit', tournamentsCtrl.edit);
+// PUT /tournaments/:id
+router.put('/:id', tournamentsCtrl.update);
 
 module.exports = router;

@@ -8,10 +8,11 @@ module.exports = {
   new: newTournament,
   show,
   register,
-  update,
   newDraw,
   showPlayer,
-  delete: deleteTournament
+  delete: deleteTournament,
+  edit,
+  update
 };
 
 async function index(req, res) {
@@ -59,15 +60,15 @@ async function register(req, res) {
   res.redirect(`/tournaments/${req.params.id}`);
 }
 
-async function update(req, res) {
-  const tournament = await Tournament.findById(req.params.id);
-  req.body.name = req.user.name;
-  req.body.user = req.user._id;
-  tournament.players.push(req.body);
-  await tournament.save();
-  console.log(req.body);
-  res.redirect(`/tournaments/${tournament._id}`);
-}
+// async function update(req, res) {
+//   const tournament = await Tournament.findById(req.params.id);
+//   req.body.name = req.user.name;
+//   req.body.user = req.user._id;
+//   tournament.players.push(req.body);
+//   await tournament.save();
+//   console.log(req.body);
+//   res.redirect(`/tournaments/${tournament._id}`);
+// }
 
 async function newDraw(req, res) {
   const tournament = await Tournament.findById(req.params.id);
@@ -87,4 +88,14 @@ async function showPlayer(req, res) {
 async function deleteTournament(req, res) {
   await Tournament.deleteOne({_id: req.params.id});
   res.redirect('/tournaments');
+}
+
+async function edit(req, res) {
+  const tournament = await Tournament.findById(req.params.id);
+  res.render('tournaments/edit', { tournament });
+}
+
+async function update(req, res) {
+  await Tournament.updateOne({_id: req.params.id}, req.body);
+  res.redirect(`/tournaments/${req.params.id}`)
 }
