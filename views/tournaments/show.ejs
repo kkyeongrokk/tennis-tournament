@@ -2,7 +2,12 @@
 
 <div id="tournament-show-container">
   <div>
-    <h2><%= title %> <a href="/tournaments/<%= tournament._id %>/edit">Edit</a></h2>
+    <h2>
+      <%= title %> 
+      <% if (user?.admin) { %>
+      <a href="/tournaments/<%= tournament._id %>/edit">Edit</a>
+      <% } %>
+    </h2>
     <p>Club Name: <%= tournament.clubName %></p>
     <p>Location: <%= tournament.location %></p>
     <p>Date: <%= tournament.date.toString().slice(0, 15) %></p>

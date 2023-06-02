@@ -140,6 +140,7 @@ body {
 
 /* tournament index */
 #tournaments-list-container {
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,6 +173,26 @@ body {
 }
 
 /* edit tournament */
+#edit-tournament {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-tournament-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  margin: 3vmin;
+}
+
+#edit-tournament-form input:last-child {
+  grid-area: 5 / 1 / 6 / 3
+}
+
+/* add tournament */
 #add-tournament {
   height: 80%;
   display: flex;

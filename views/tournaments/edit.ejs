@@ -1,9 +1,9 @@
 <%- include('../partials/header') %>
 
 
-<div id="add-tournament">
+<div id="edit-tournament">
   <h2>Edit Tournament</h2>
-  <form id="add-tournament-form" action="/tournaments/<%= tournament._id %>?_method=PUT" method="POST">
+  <form id="edit-tournament-form" action="/tournaments/<%= tournament._id %>?_method=PUT" method="POST">
     <label>Name: </label>
     <input type="text" name="name">
     <label>Club Name: </label>
