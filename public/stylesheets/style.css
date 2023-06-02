@@ -317,6 +317,7 @@ body {
 
 /* footer */
 footer {
+  padding: 2vmin;
   font-size: 2vmin;
   text-align: right;
 }

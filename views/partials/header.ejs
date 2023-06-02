@@ -14,13 +14,11 @@
 </head>
 <body>
   <nav id="nav">
-    <% /* TODO: Make the nav bar not able to click the button that user is already in */ %>
     <a href="/"><i class="fa-solid fa-house"></i></a>
     <div id="nav-right">
       <a href="/tournaments">TOURNAMENTS</a>
       <a href="/players">PLAYERS LIST</a>
       <% if (user) { %>
-        <%/* TODO: if user already registered for the tournament hide Register button */%>
         <a id="log-out" href="/logout">LOG OUT</a>
         <img src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer">
         <span><%= user.name %></span>

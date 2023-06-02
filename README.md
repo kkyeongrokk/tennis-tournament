@@ -59,14 +59,14 @@
   <summary> How to Register for tournament </summary>
     1. Log in with a Google account.<br>
     2. Register your information to the web app.<br>
-    3. Click tournaments and choose the tournament <br>you want to register.
+    3. Click tournaments and choose the tournament you want to register.<br>
     4. In tournament details page, click register here button.
 </details>
 
 <details>
   <summary> How to enter scores </summary>
     1. Log in with a Google account(admin).<br>
-    2. Click tournaments and choose the tournament <br>you want to update the scores.
+    2. Click tournaments and choose the tournament you want to update the scores.<br>
     3. Click the draw button.<br>
     4. Click score button in the draw page.
 </details>
@@ -74,7 +74,7 @@
 <details>
   <summary> How to enter scores </summary>
     1. Log in with a Google account(admin).<br>
-    2. Click tournaments and choose the tournament <br>you want to update the scores.
+    2. Click tournaments and choose the tournament you want to update the scores.<br>
     3. Click the draw button.<br>
     4. Click score button in the draw page.
 </details>

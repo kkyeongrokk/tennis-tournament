@@ -4,7 +4,6 @@ module.exports = {
   index,
   new: newPlayer,
   create,
-  show
 };
 
 async function index(req, res) {
@@ -20,9 +19,4 @@ async function create(req, res) {
   req.body.user = req.user._id;
   const player = await Player.create(req.body);
   res.redirect('/');
-}
-
-async function show(req, res) {
-  const player = await Player.findById(req.params.id);
-  res.render('players/show', {player})
 }

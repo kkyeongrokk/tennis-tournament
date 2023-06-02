@@ -12,10 +12,8 @@ router.post('/', tournamentsCtrl.create);
 router.get('/:id/register', tournamentsCtrl.register);
 // GET /tournaments/:id
 router.get('/:id', tournamentsCtrl.show);
-// GET /tournaments/:id/registration
-router.get('/:id/registration', tournamentsCtrl.register);
 // GET /tournaments/:id/draw
-router.get('/:id/draw', tournamentsCtrl.newDraw);
+router.get('/:id/draw', tournamentsCtrl.draw);
 // GET /tournaments/:id/players/:playersId
 router.get('/:id/players/:playersId', tournamentsCtrl.showPlayer);
 // DELETE /tournaments/:id
