@@ -42,8 +42,8 @@ async function register(req, res) {
   const tournament = await Tournament.findById(req.params.id);
   const player = await Player.findOne({ user: req.user._id });
   // One user can only register once in the web app
-  // let registered = tournament.players.some(p => p._id.equals(player._id));
-  // if (registered || tournament.players.length === 17) return res.redirect(`/tournaments/${req.params.id}`);
+  let registered = tournament.players.some(p => p._id.equals(player._id));
+  if (registered || tournament.players.length === 17) return res.redirect(`/tournaments/${req.params.id}`);
   
   tournament.players.push(player);
 
