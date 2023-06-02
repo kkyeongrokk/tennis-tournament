@@ -5,7 +5,9 @@ const Player = require('../models/player');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('home', { title: 'Express' });
+  const player = Player.findById(req.params.id);
+  res.render('home', { player });
+
 });
 
 // Google OAuth login route

@@ -1,51 +1,53 @@
 <%- include('../partials/header') %>
 
-<h3><%= match.playerOne.name %> vs <%= match.playerTwo.name %></h3>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>1 Set</th>
-      <th>2 Set</th>
-      <th>3 Set</th>
-    </tr>
-  </thead>
-  
-  <% if (user?.admin && match.playerOneScore.length === 0) { %>
-    <form action="/tournaments/<%= tournament._id %>/draw/<%= match._id %>?_method=PUT" method="POST">
+<div id="score">
+  <h2><%= match.playerOne.name %> vs <%= match.playerTwo.name %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>1 Set</th>
+        <th>2 Set</th>
+        <th>3 Set</th>
+      </tr>
+    </thead>
+    
+    <% if (user?.admin && match.playerOneScore.length === 0) { %>
+      <form action="/tournaments/<%= tournament._id %>/draw/<%= match._id %>?_method=PUT" method="POST">
+        <tbody>
+            <tr>
+              <td><%= match.playerOne.name %></td>
+              <td><input type="number" name="p1Score1" pattern="[0-7]" required></td>
+              <td><input type="number" name="p1Score2" pattern="[0-7]" required></td>
+              <td><input type="number" name="p1Score3" pattern="[0-7]" required></td>
+            </tr>
+            <tr>
+              <td><%= match.playerTwo.name %></td>
+              <td><input type="number" name="p2Score1" pattern="[0-7]" required></td>
+              <td><input type="number" name="p2Score2" pattern="[0-7]" required></td>
+              <td><input type="number" name="p2Score3" pattern="[0-7]" required></td>
+            </tr>
+            <input type="submit" value="Submit Score">
+          </tbody>
+      </form>
+    <% } else { %>
       <tbody>
-          <tr>
-            <td><%= match.playerOne.name %></td>
-            <td><input type="number" name="p1Score1" pattern="[0-7]" required></td>
-            <td><input type="number" name="p1Score2" pattern="[0-7]" required></td>
-            <td><input type="number" name="p1Score3" pattern="[0-7]" required></td>
-          </tr>
-          <tr>
-            <td><%= match.playerTwo.name %></td>
-            <td><input type="number" name="p2Score1" pattern="[0-7]" required></td>
-            <td><input type="number" name="p2Score2" pattern="[0-7]" required></td>
-            <td><input type="number" name="p2Score3" pattern="[0-7]" required></td>
-          </tr>
-          <input type="submit" value="Submit Score">
-        </tbody>
-    </form>
-  <% } else { %>
-    <tbody>
-      <tr>
-        <td><%= match.playerOne.name %></td>
-        <td><%= match.playerOneScore[0] %></td>
-        <td><%= match.playerOneScore[1] %></td>
-        <td><%= match.playerOneScore[2] %></td>
-      </tr>
-      <tr>
-        <td><%= match.playerTwo.name %></td>
-        <td><%= match.playerTwoScore[0] %></td>
-        <td><%= match.playerTwoScore[1] %></td>
-        <td><%= match.playerTwoScore[2] %></td>
-      </tr>
-    </tbody>
-  <% } %>
-</table>
+        <tr>
+          <td><%= match.playerOne.name %></td>
+          <td><%= match.playerOneScore[0] %></td>
+          <td><%= match.playerOneScore[1] %></td>
+          <td><%= match.playerOneScore[2] %></td>
+        </tr>
+        <tr>
+          <td><%= match.playerTwo.name %></td>
+          <td><%= match.playerTwoScore[0] %></td>
+          <td><%= match.playerTwoScore[1] %></td>
+          <td><%= match.playerTwoScore[2] %></td>
+        </tr>
+      </tbody>
+    <% } %>
+  </table>
+</div>
 
 
 <%- include('../partials/footer') %>

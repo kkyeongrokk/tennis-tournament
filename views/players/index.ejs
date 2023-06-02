@@ -1,36 +1,31 @@
 <%- include('../partials/header') %>
 
-<h2><%= title %></h2>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Country</th>
-      <th>Ranking</th>
-      <th>UTR</th>
-      <th></th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <% players.forEach(function(p) { %>
+<div id="players-list-container">
+  <h2><%= title %></h2>
+  <table>
+    <thead>
       <tr>
-        <td><%= p.name %></td>
-        <td><%= p.age %></td>
-        <td><%= p.country %></td>
-        <td><%= p.ranking %></td>
-        <td><%= p.utr %></td>
-        <td><a href="/players/<%= p._id %>">Info</a></td>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Country</th>
+        <th>Ranking</th>
+        <th>UTR</th>
+        <th></th>
       </tr>
-    </tbody>
-  <% }) %>
-</table>
-
-<form action="/tournaments" method="POST">
-  <% players.forEach(function(p, idx) { %>
-    <input type="hidden" name="player<%= idx + 1 %>" value="<%= p._id %>">
+    </thead>
+    
+    <tbody>
+      <% players.forEach(function(p) { %>
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.age %></td>
+          <td><%= p.country %></td>
+          <td><%= p.ranking %></td>
+          <td><%= p.utr %></td>
+        </tr>
+      </tbody>
     <% }) %>
-    <button type="submit">DRAW</button>
-</form>
+  </table>
+</div>
+
 <%- include('../partials/footer') %>

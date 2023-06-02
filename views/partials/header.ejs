@@ -22,10 +22,8 @@
       <% if (user) { %>
         <%/* TODO: if user already registered for the tournament hide Register button */%>
         <a id="log-out" href="/logout">LOG OUT</a>
-        <div>
-          <img src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer">
-          <span><%= user.name %></span>
-        </div>
+        <img src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer">
+        <span><%= user.name %></span>
       <% } else { %>
         <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
       <% } %>

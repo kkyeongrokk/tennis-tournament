@@ -33,7 +33,10 @@ function newTournament(req, res) {
 
 async function show(req, res) {
   const tournament = await Tournament.findById(req.params.id).populate('players').populate('firstRound1');
-  res.render('tournaments/show', { title: tournament.name, tournament });
+  const td = tournament.date;
+  let tourDate = `${td.getFullYear()}-${(td.getMonth() + 1).toString().padStart(2, '0')}`;
+  tourDate += `-${td.getDate().toString().padStart(2, '0')}T${td.toTimeString().slice(0, 5)}`;
+  res.render('tournaments/show', { title: tournament.name, tournament, tourDate });
 }
 
 async function register(req, res) {

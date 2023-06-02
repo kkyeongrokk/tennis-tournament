@@ -1,20 +1,21 @@
 <%- include('../partials/header') %>
 
-<h2><%= title %></h2>
-
-<form action="/players" method="POST">
-  <label>Name: </label>
-  <input type="text" name="name">
-  <label>Age: </label>
-  <input type="number" name="age">
-  <label>Country: </label>
-  <input type="text" name="country">
-  <label>Ranking: </label>
-  <input type="number" name="ranking">
-  <label>UTR: </label>
-  <input type="number" name="utr">
-  
-  <input type="submit" value="Register">
-</form>
+<div id="register">
+  <h2>Register</h2>
+  <form id="register-form" action="/players" method="POST">
+    <label>Name: </label>
+    <input type="text" name="name">
+    <label>Age: </label>
+    <input type="number" name="age">
+    <label>Country: </label>
+    <input type="text" name="country">
+    <label>Ranking: </label>
+    <input type="number" name="ranking">
+    <label>UTR: </label>
+    <input type="number" name="utr">
+    
+    <input type="submit" value="Register">
+  </form>
+</div>
 
 <%- include('../partials/footer') %>

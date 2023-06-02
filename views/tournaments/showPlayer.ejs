@@ -1,10 +1,12 @@
 <%- include('../partials/header') %>
 
-<h2><%= player.name %></h2>
+<div id="show-player">
+  <h2><%= player.name %></h2>
 
-<div>Age: <%= player.age %></div>
-<div>Country: <%= player.country %></div>
-<div>Ranking: <%= player.ranking %></div>
-<div>UTR: <%= player.utr %></div>
+  <div>Age: <%= player.age %></div>
+  <div>Country: <%= player.country %></div>
+  <div>Ranking: <%= player.ranking %></div>
+  <div>UTR: <%= player.utr %></div>
+</div>
 
 <%- include('../partials/footer') %>

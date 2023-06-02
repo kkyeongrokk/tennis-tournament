@@ -1,15 +1,19 @@
 <%- include('../partials/header') %>
 
-<form action="/tournaments/<%= tournament._id %>?_method=PUT" method="POST">
-  <label>Name: </label>
-  <input type="text" name="name">
-  <label>Club Name: </label>
-  <input type="text" name="clubName">
-  <label>Location: </label>
-  <input type="text" name="location">
-  <label>Date: </label>
-  <input type="datetime-local">
-  <input type="submit">
-</form>
+
+<div id="add-tournament">
+  <h2>Edit Tournament</h2>
+  <form id="add-tournament-form" action="/tournaments/<%= tournament._id %>?_method=PUT" method="POST">
+    <label>Name: </label>
+    <input type="text" name="name">
+    <label>Club Name: </label>
+    <input type="text" name="clubName">
+    <label>Location: </label>
+    <input type="text" name="location">
+    <label>Date: </label>
+    <input type="datetime-local">
+    <input type="submit">
+  </form>
+</div>
 
 <%- include('../partials/footer') %>
